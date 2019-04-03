@@ -29,11 +29,14 @@ async function getRepoData() {
 
     for (var i = 0, len = repoResponse.length; i < len; i++) {
 
-        const watcherResponse = [].concat.apply([], (await github.paginate(github.activity.listWatchersForRepo({owner: org, repo: repoResponse[i][0]}))))
-        table.push({
-            repo: repoResponse[i][0],
-            watchers: watcherResponse.length
-        })
+        const watcherResponse = [].concat.apply([], (await github.paginate(github.activity.listWatchersForRepo({owner: org, repo: repoResponse[i][0]}))).map(n => n.data.map((n) => [n.login])))
+        
+        for (var j = 0, len1 = watcherResponse.length; j < len1; j++) {
+            table.push({
+                repo: repoResponse[i][0],
+                watchers: watcherResponse[j][0]
+            })
+        }
     }
 
     //Write to CSV file
