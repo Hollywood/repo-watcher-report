@@ -1,0 +1,15 @@
+{
+  "name": "repo-watcher-report",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Jon Cardona",
+  "license": "ISC",
+  "dependencies": {
+    "@octokit/rest": "^15.8.1",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "fetch": "^1.1.0",
+    "json2csv": "^4.1.3"
+  }
+}
